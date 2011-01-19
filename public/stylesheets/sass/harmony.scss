@@ -1,0 +1,12 @@
+@import 'mixins';
+
+body {
+  background-color: #555555;
+  color: #333333;
+  font-family: "Helvetica";
+}
+body, p, ol, ul, td {
+  font-size:   13px;
+  line-height: 18px;
+}
+

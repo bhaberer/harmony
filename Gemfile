@@ -31,9 +31,10 @@ group :test do
   gem 'rspec-rails'
   gem 'cucumber'
   gem 'cucumber-rails'
-  gem 'factory_girl', '1.3.0'
+  gem 'factory_girl', '1.3.2'
+  gem 'factory_girl_rails', '1.0'
   gem 'database_cleaner', '0.5.2'
-  gem 'webrat', '0.7.0'
-  gem 'rcov'
+  gem 'capybara', '0.3.9'
+  gem 'rcov', '0.9.8'
 end
 
