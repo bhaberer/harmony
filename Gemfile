@@ -22,7 +22,7 @@ end
 
 group :development do
   # bundler requires these gems in development
-  gem 'mysql'
+  gem 'mysql2'
 end
 
 group :test do
