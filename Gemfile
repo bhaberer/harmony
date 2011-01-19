@@ -1,8 +1,9 @@
 # include at least one source and the rails gem
 source 'http://rubygems.org'
-gem 'rails', '2.3.8'
+gem 'rails', '3.0.0'
 #gem 'aws-s3', '0.6.2'
 #gem 'paperclip', '2.3.1.1'
+gem 'devise', '1.1.5'
 gem 'pg'
 gem 'haml'
 #gem 'rest-graph'
@@ -15,7 +16,6 @@ gem 'haml'
 group :plugins do
   # gems that should be loaded in all environments, but depend on Rails to load
   #gem 'devise', '1.0.7', :git => 'git://github.com/bhaberer/devise.git', :branch => 'v1.0'
-  gem 'devise', '1.0.8'
   gem 'hoptoad_notifier', '2.3.2'
   #gem 'google-checkout', '0.1.2', :git => 'git://github.com/bhaberer/google-checkout.git'
 end
