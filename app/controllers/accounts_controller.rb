@@ -10,14 +10,35 @@ class AccountsController < ApplicationController
 
   def show
     @account = Account.find(params[:id])
-
-    respond_to do |format|
-      format.html 
+ 
+    if @account.users.length < 2
+      redirect_to :root, :notice => "Sorry, That Harmony is not Complete, Yet."
+    else 
+      @notes = @account.notes 
+      users = @account.users
+      users[0] == current_user ? @friend = users[1] : @friend = users[0] 
+      respond_to do |format|
+        format.html 
+      end
     end
+  end
+
+  def join 
+    @account = Account.find(params[:id])
+    @invite = @account.invites.first
+    @email = current_user.email 
+    if @invite.email == @email
+      @account.users << current_user 
+      @invite.destroy
+      @account.invites == []
+    end 
+    redirect_to @account
+
   end
 
   def new
     @account = Account.new
+    @code = params[:code]
 
     respond_to do |format|
       format.html 
@@ -30,11 +51,14 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.new(params[:account])
+    @email = params[:email]
 
     respond_to do |format|
-      if @account.save
+      if @account.save && @email.present?
         @account.users << current_user
-        format.html { redirect_to(@account, :notice => 'Account was successfully created.') }
+        @account.invites << Invite.new(:code => ActiveSupport::SecureRandom.base64(12), :email => @email)
+        UserMailer.invite(@email, current_user).deliver
+        format.html { redirect_to(:home, :notice => 'Harmony was created, you can access once the other person accepts.') }
       else
         format.html { render :action => "new" }
       end

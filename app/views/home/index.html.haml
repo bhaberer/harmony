@@ -1,0 +1,15 @@
+.home
+  %h1 Welcome to Harmony!
+  You can #{link_to 'Create a new harmony', new_account_path} or #{link_to 'Edit your profile', '/profile/edit'}.
+  %br
+  - if @accounts.present?
+    You are a part of the following Harmonies.
+    %ul
+      - @accounts.each do |account|
+        %li= link_to "Account #{account.id}", account  
+  - if @invites.present?
+    You are invited to be a part of the following Harmonies.
+    %ul
+      - @invites.each do |invite|
+        %li= link_to "Invite from #{invite.account.users.first.email}", join_account_path(invite.account) 
+    

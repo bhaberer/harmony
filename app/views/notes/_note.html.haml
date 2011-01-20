@@ -1,0 +1,6 @@
+.note
+  .right
+    = button_to "X", account_note_path(@account, note), :confirm => "Are you sure?", :method => :delete
+  %span
+    From: #{note.user.profile.name || note.user.email }
+  %p= note.content

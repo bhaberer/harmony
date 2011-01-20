@@ -4,6 +4,7 @@
     %title
       = @page_title || 'Harmony'
     = stylesheet_link_tag 'harmony'
+    = javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'autocomplete', 'application', 'facebox', 'rails'
     = csrf_meta_tag 
   %body       
     %p.notice= notice 

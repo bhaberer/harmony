@@ -1,0 +1,12 @@
+%h1= t '.title'
+%p
+  = link_to t('back'), notes_path
+  = link_to t('edit'), edit_note_path(@note)
+
+%dl
+  %dt= Note.human_attribute_name :user_id
+  %dd= @note.user_id
+  %dt= Note.human_attribute_name :account_id
+  %dd= @note.account_id
+  %dt= Note.human_attribute_name :content
+  %dd= @note.content

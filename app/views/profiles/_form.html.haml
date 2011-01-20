@@ -1,0 +1,17 @@
+.form
+  = form_for@profile, :url => '/profile' do |f|
+    - if @profile.errors.any?
+      #errorExplanation
+        %h2= "#{pluralize(@profile.errors.count, 'error')} prohibited this user from being saved:"
+        %ul
+        - @profile.errors.full_messages.each do |msg|
+          %li= msg
+
+    .label= f.label :name
+    .field= f.text_field :name
+    .label= f.label :twitter
+    .field= f.text_field :twitter
+    .label= f.label :phone
+    .field= f.text_field :phone
+    = f.submit :class => :button
+  %br.clear

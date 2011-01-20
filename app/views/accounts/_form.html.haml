@@ -6,6 +6,8 @@
       - @account.errors.full_messages.each do |msg|
         %li= msg
   
+  = f.text_field :email
+
 
   .actions
     = f.submit

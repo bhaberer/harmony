@@ -2,12 +2,13 @@
 
 .account
   .info
-    .user1
+    .user
       = image_tag avatar_url(current_user)
-
-      %h2 Info for User1
-    .user2 
-      %h2 Info for User2
+      = current_user.profile.name || ''
+    .friend
+      = image_tag avatar_url(@friend)
+      = @friend.profile.name || ''
+    %br.clear
   .feed
     %ul 
       %li OMG COntent Here!
@@ -30,23 +31,24 @@
       %li OMG COntent Here!
   .widgets
     .notes
-      %ul
-        %li OMG Cute Note!
-        %li OMG Cute Note!
-        %li OMG Cute Note!
+      %span Notes
+      = link_to 'New Note', new_account_note_path(@account)
+      = render :partial => 'notes/note', :collection => @notes 
     .todo
+      %span Things to do.
       %ul
         %li OMG You need to do this!
         %li OMG You need to do this!
         %li OMG You need to do this!
         %li OMG You need to do this!
     .list
+      %span Things to bring.
       %ul
         %li OMG You need to bring this!
         %li OMG You need to bring this!
         %li OMG You need to bring this!
         %li OMG You need to bring this!
-    
+  %br.clear 
 
   
 

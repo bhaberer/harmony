@@ -1,13 +1,9 @@
 class HomeController < ApplicationController
 
   def index
-    if current_user.accounts.blank?
-      redirect_to new_account_path
-    elsif current_user.accounts.length == 1
-      redirect_to current_user.accounts.first
-    else 
-      @accounts = current_user.accounts
-    end
+    current_user.profile = Profile.new unless current_user.profile.present?
+    @accounts = current_user.accounts.inject([]) {|x,y| x << y if y.users.count == 2; x}
+    @invites = Invite.find_all_by_email(current_user.email)
   end
 
 end
