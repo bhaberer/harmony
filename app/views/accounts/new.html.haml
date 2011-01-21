@@ -2,6 +2,8 @@
   - if @code.blank?
     %h3 Create a new account by entering the email address of the person you want to create a harmony with.
     = form_tag('/accounts')
+    .label= label_tag 'Name (optional)'
+    .field= text_field_tag 'name'
     .label= label_tag 'Email'
     .field= text_field_tag 'email'
     = submit_tag "Create Harmony", :class => :button

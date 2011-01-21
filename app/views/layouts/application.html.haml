@@ -10,7 +10,7 @@
     .nav
       - if user_signed_in?
         .user
-          Signed in as #{current_user.profile.name}  
+          Signed in as #{current_user.name}  
           |  
           #{ link_to "Edit Profile", '/profile/edit' } 
           |
@@ -23,7 +23,8 @@
         .notice= notice 
         .alert= alert
       .acc     
-        - if @account.present? && params[:action] == :show
-          = link_to 'Account Settings', edit_account_path(@account) 
-
+        - if @account.present? && controller.action_name != 'new'
+          = link_to_unless_current 'Account Settings', edit_account_path(@account) 
+          |
+        = link_to_unless_current "Home", home_path
     .main= yield

@@ -2,10 +2,10 @@
   .info
     .user
       = image_tag avatar_url(current_user)
-      = current_user.profile.name || ''
+      = current_user.name
     .friend
       = image_tag avatar_url(@friend)
-      = @friend.profile.name || ''
+      = @friend.name
     %br.clear
   .feed
     %ul 

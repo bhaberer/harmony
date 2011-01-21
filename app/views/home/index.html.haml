@@ -6,7 +6,7 @@
     You are a part of the following Harmonies.
     %ul
       - @accounts.each do |account|
-        %li= link_to "Account #{account.id}", account  
+        %li= link_to account.name.present? ? account.name : "Account #{account.id}", account  
   - if @invites.present?
     You are invited to be a part of the following Harmonies.
     %ul

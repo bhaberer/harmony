@@ -52,6 +52,7 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.new(params[:account])
+    @account.name = params[:name] if params[:name]
     @email = params[:email]
 
     respond_to do |format|
