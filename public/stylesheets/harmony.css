@@ -44,10 +44,11 @@ input.button {
   padding: 10px; }
 
 .nav {
-  background-color: white;
+  background-color: #ff9640;
   border-bottom: 1px solid black;
   margin: -9px -10px;
   padding: 4px 20px;
+  color: black;
   position: fixed;
   width: 100%; }
   .nav .user {
