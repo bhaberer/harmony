@@ -1,6 +1,15 @@
-.account
-  %h3 Update Account
+.account_settings
+  %h1 Update Account
   = render 'form'
-  %h3 Create List
+  %h3 Account Lists
   = link_to "Create New List", new_account_list_path(@account)
+  %ul
+    - @account.lists.each do |list|
+      %li
+        = list.title
+        | 
+        = button_to 'Delete List', account_list_path(@account, list), :method => :delete, :class => :link_button
+        |
+        = link_to 'Rename List', edit_account_list_path(@account, list) 
+    
 

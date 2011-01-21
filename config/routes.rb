@@ -1,8 +1,5 @@
 Harmony::Application.routes.draw do
 
-
-  resources :items
-
   devise_for :users 
 
   resource :profile

@@ -1,3 +1,5 @@
-.lisits
+.lists
   = list.title
-  = render :partial => 'items/item', :collection => list.items
+  = link_to '+', new_list_item_path(list)
+  %ul
+    = render :partial => 'items/item', :collection => list.items

@@ -33,11 +33,12 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(params[:note])
-    @note.account = @account
-    @note.user = current_user
 
     respond_to do |format|
       if @note.save
+        @account.notes << @note
+        current_user.notes << @note 
+        UserMailer.new_note(@account.friend(current_user), current_user, @account).deliver
         format.html { redirect_to(@account, :notice => 'Note was successfully created.') }
       else
         format.html { render :action => "new" }

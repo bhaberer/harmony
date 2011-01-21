@@ -11,7 +11,7 @@ body, p, ol, ul, td {
   clear: both; }
 
 .main {
-  padding-top: 20px; }
+  padding-top: 25px; }
 
 a {
   color: darkred;
@@ -42,10 +42,38 @@ a {
 .nav {
   background-color: white;
   border-bottom: 1px solid black;
-  margin: -13px -10px;
+  margin: -9px -10px;
   padding: 4px 20px;
   position: fixed;
   width: 100%; }
+  .nav .user {
+    float: left; }
+  .nav .acc {
+    float: right;
+    padding-right: 50px; }
+  .nav .notifications {
+    float: left;
+    padding-left: 12%; }
+    .nav .notifications div {
+      color: darkred;
+      font-size: 15px;
+      font-weight: bold; }
+
+.right {
+  float: right; }
+
+.left {
+  float: left; }
+
+.link_button {
+  border: 0px solid black;
+  background-color: white; }
+  .link_button:hover {
+    background-color: black;
+    color: white; }
+
+.button_to {
+  display: block; }
 
 .form {
   border-radius: 10px;
@@ -121,6 +149,15 @@ a {
     float: right;
     margin-right: 10px; }
 
+.account_settings {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  width: 500px;
+  margin: auto;
+  background-color: BurlyWood;
+  padding: 10px; }
+
 .account {
   border-radius: 10px;
   -moz-border-radius: 10px;
@@ -174,6 +211,18 @@ a {
       float: left;
       width: 300px;
       background-color: #999; }
+    .account .widgets .lists ul {
+      list-style-type: none;
+      padding-left: 0; }
+      .account .widgets .lists ul li {
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        background-color: white;
+        border: 1px solid black;
+        margin: 10px;
+        padding: 10px;
+        width: 260px; }
     .account .widgets .notes .note {
       border-radius: 4px;
       -moz-border-radius: 4px;
@@ -183,13 +232,6 @@ a {
       margin: 10px;
       padding: 10px;
       width: 260px; }
-      .account .widgets .notes .note input {
-        border: 0px solid black;
-        float: right;
-        background-color: white; }
-        .account .widgets .notes .note input:hover {
-          background-color: black;
-          color: white; }
     .account .widgets .todos .todo {
       border-radius: 4px;
       -moz-border-radius: 4px;
@@ -199,10 +241,3 @@ a {
       margin: 10px;
       padding: 10px;
       width: 260px; }
-      .account .widgets .todos .todo input {
-        border: 0px solid black;
-        float: right;
-        background-color: white; }
-        .account .widgets .todos .todo input:hover {
-          background-color: black;
-          color: white; }
