@@ -10,12 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110119235231) do
+ActiveRecord::Schema.define(:version => 20110120233537) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "todo_list_on", :default => true
+    t.boolean  "notes_on",     :default => true
+    t.boolean  "public",       :default => false
   end
 
   create_table "accounts_users", :id => false, :force => true do |t|
@@ -31,6 +34,20 @@ ActiveRecord::Schema.define(:version => 20110119235231) do
     t.string   "email"
   end
 
+  create_table "items", :force => true do |t|
+    t.string   "content"
+    t.integer  "list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lists", :force => true do |t|
+    t.string   "title"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "account_id"
@@ -44,6 +61,15 @@ ActiveRecord::Schema.define(:version => 20110119235231) do
     t.integer  "user_id"
     t.string   "twitter"
     t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "todos", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "account_id"
+    t.boolean  "completed",  :default => false
+    t.string   "task"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

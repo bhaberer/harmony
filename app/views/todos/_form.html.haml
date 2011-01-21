@@ -1,0 +1,12 @@
+.form
+  = form_for @todo, :url => account_todos_path(@account) do |f|
+    - if @todo.errors.any?
+      #errorExplanation
+        %h2= "#{pluralize(@todo.errors.count, 'error')} prohibited this user from being saved:"
+        %ul
+        - @todo.errors.full_messages.each do |msg|
+          %li= msg
+    .label= f.label :task
+    .field= f.text_field :task
+    = f.submit :class => :button
+  %br.clear

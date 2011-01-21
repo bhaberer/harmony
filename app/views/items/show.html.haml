@@ -1,0 +1,10 @@
+%h1= t '.title'
+%p
+  = link_to t('back'), items_path
+  = link_to t('edit'), edit_item_path(@item)
+
+%dl
+  %dt= Item.human_attribute_name :content
+  %dd= @item.content
+  %dt= Item.human_attribute_name :list_id
+  %dd= @item.list_id

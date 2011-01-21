@@ -13,10 +13,11 @@ class AccountsController < ApplicationController
  
     if @account.users.length < 2
       redirect_to :root, :notice => "Sorry, That Harmony is not Complete, Yet."
-    else 
+    else
+      @lists = @account.lists
+      @todos = @account.todos
       @notes = @account.notes 
-      users = @account.users
-      users[0] == current_user ? @friend = users[1] : @friend = users[0] 
+      @friend = @account.friend(current_user)
       respond_to do |format|
         format.html 
       end

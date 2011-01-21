@@ -1,2 +1,6 @@
-%h3 Update Account
-= render 'form'
+.account
+  %h3 Update Account
+  = render 'form'
+  %h3 Create List
+  = link_to "Create New List", new_account_list_path(@account)
+

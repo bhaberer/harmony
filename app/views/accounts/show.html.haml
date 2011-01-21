@@ -1,5 +1,3 @@
-%h1 Account!
-
 .account
   .info
     .user
@@ -34,20 +32,12 @@
       %span Notes
       = link_to 'New Note', new_account_note_path(@account)
       = render :partial => 'notes/note', :collection => @notes 
-    .todo
+    .todos
       %span Things to do.
-      %ul
-        %li OMG You need to do this!
-        %li OMG You need to do this!
-        %li OMG You need to do this!
-        %li OMG You need to do this!
-    .list
-      %span Things to bring.
-      %ul
-        %li OMG You need to bring this!
-        %li OMG You need to bring this!
-        %li OMG You need to bring this!
-        %li OMG You need to bring this!
+      = link_to 'I have something you need to do.', new_account_todo_path(@account)
+      = render :partial => 'todos/todo', :collection => @todos
+    = render :partial => 'lists/list', :collection => @lists
+
   %br.clear 
 
   

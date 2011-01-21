@@ -1,0 +1,14 @@
+%h1= t '.title'
+%p
+  = link_to t('back'), todos_path
+  = link_to t('edit'), edit_todo_path(@todo)
+
+%dl
+  %dt= Todo.human_attribute_name :user_id
+  %dd= @todo.user_id
+  %dt= Todo.human_attribute_name :account_id
+  %dd= @todo.account_id
+  %dt= Todo.human_attribute_name :completed
+  %dd= @todo.completed
+  %dt= Todo.human_attribute_name :task
+  %dd= @todo.task

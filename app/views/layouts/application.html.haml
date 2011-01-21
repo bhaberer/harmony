@@ -4,9 +4,23 @@
     %title
       = @page_title || 'Harmony'
     = stylesheet_link_tag 'harmony'
-    = javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'autocomplete', 'application', 'facebox', 'rails'
+    = javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'application', 'rails'
     = csrf_meta_tag 
-  %body       
+  %body
+    .nav
+      - if user_signed_in?
+        Signed in as #{current_user.profile.name}  
+        |  
+        #{ link_to "Edit Profile", '/profile/edit' } 
+        |
+        #{ link_to "Sign Out", destroy_user_session_path } 
+      - else 
+        You are not logged in, #{link_to "Login", new_user_session_path} 
+        or #{link_to "Sign Up", new_user_registration_path}
+      %div{:style => 'float: right;padding-right: 50px;'}      
+        - if @account.present?
+          = link_to 'Account Settings', edit_account_path(@account) 
+
     %p.notice= notice 
     %p.alert= alert
     .main= yield

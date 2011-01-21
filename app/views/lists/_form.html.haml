@@ -1,0 +1,12 @@
+.form
+  = form_for @list, :url => account_list_path(@account) do |f|
+    - if @list.errors.any?
+      #errorExplanation
+        %h2= "#{pluralize(@list.errors.count, 'error')} prohibited this user from being saved:"
+        %ul
+        - @list.errors.full_messages.each do |msg|
+          %li= msg
+    .label= f.label :title
+    .field= f.text_field :title
+    = f.submit :class => :button
+  %br.clear

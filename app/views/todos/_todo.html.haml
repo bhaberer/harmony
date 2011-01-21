@@ -1,0 +1,7 @@
+.todo
+  - if todo.user == current_user 
+    You asked #{@account.friend(current_user).profile.name.split[0]} to #{todo.task}, but they have not. 
+  - else
+    = button_to "Done!", account_todo_path(@account, todo), :method => :delete
+    #{@account.friend(current_user).profile.name.split[0]} wants you to #{todo.task}.
+    
