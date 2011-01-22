@@ -1,8 +1,9 @@
 class UserMailer < ActionMailer::Base
   default :from => "harmony.application@gmail.com"
  
-  def invite(email, user) 
-    @user = user  
+  def invite(email, user, account) 
+    @user = user
+    @account_name = account.name
     mail(:to => email, :subject => "[Harmony] New Harmony Request.")      
   end
 

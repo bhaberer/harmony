@@ -59,7 +59,7 @@ class AccountsController < ApplicationController
       if @account.save && @email.present?
         @account.users << current_user
         @account.invites << Invite.new(:code => ActiveSupport::SecureRandom.base64(12), :email => @email)
-        UserMailer.invite(@email, current_user).deliver
+        UserMailer.invite(@email, current_user, @account).deliver
         format.html { redirect_to(:home, :notice => 'Harmony was created, you can access once the other person accepts.') }
       else
         format.html { render :action => "new" }
