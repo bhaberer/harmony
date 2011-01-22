@@ -40,8 +40,14 @@ input.button {
   -webkit-border-radius: 10px;
   width: 500px;
   margin: auto;
-  background-color: white;
+  background-color: #a64b00;
   padding: 10px; }
+  .home .info {
+    background-color: #ff9640;
+    padding: 10px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px; }
 
 .nav {
   background-color: #ff9640;

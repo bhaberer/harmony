@@ -55,8 +55,13 @@ input.button {
   @include rounded;
   width: 500px;
   margin: auto;
-  background-color: white;
+  background-color: $color_b2;
   padding: 10px;
+  .info {
+    background-color: $color_a2; 
+    padding: 10px;
+    @include rounded;
+  }
 }
 
 .nav {
