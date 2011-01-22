@@ -30,11 +30,11 @@
   .widgets
     .notes
       %span Notes
-      = link_to 'New Note', new_account_note_path(@account)
+      = link_to 'New Note', new_account_note_path(@account), :rel => 'facebox'
       = render :partial => 'notes/note', :collection => @notes 
     .todos
       %span Things to do.
-      = link_to 'I have something you need to do.', new_account_todo_path(@account)
+      = link_to 'I have something you need to do.', new_account_todo_path(@account), :rel => 'facebox'
       = render :partial => 'todos/todo', :collection => @todos
     = render :partial => 'lists/list', :collection => @lists
 

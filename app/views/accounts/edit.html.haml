@@ -2,7 +2,7 @@
   %h1 Update Account
   = render 'form'
   %h3 Account Lists
-  = link_to "Create New List", new_account_list_path(@account)
+  = link_to "Create New List", new_account_list_path(@account), :rel => 'facebox'
   %ul
     - @account.lists.each do |list|
       %li

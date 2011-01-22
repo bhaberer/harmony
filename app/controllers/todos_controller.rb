@@ -16,6 +16,7 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.js { render :layout => false }
     end
   end
 
