@@ -53,7 +53,10 @@ class TodosController < ApplicationController
 
   def destroy
     @todo = Todo.find(params[:id])
-    @todo.destroy
+    email = UserMailer.completed_todo(@account.friend(current_user), current_user, @todo)
+    if @todo.destroy
+      email.deliver
+    end 
 
     respond_to do |format|
       format.html { redirect_to(@account) }

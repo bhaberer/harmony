@@ -32,9 +32,9 @@ class AccountsController < ApplicationController
       @account.users << current_user 
       @invite.destroy
       @account.invites == []
+      UserMailer.join(@account.friend(current_user), current_user, @account).deliver
     end 
     redirect_to @account
-
   end
 
   def new
