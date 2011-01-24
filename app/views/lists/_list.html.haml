@@ -1,5 +1,5 @@
 .lists
   = list.title
-  = link_to '+', new_list_item_path(list)
+  = link_to '+', new_list_item_path(list), :rel => 'facebox'
   %ul
     = render :partial => 'items/item', :collection => list.items
