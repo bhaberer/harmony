@@ -1,11 +1,9 @@
 .account
   .info
     .user
-      = image_tag avatar_url(current_user)
-      = current_user.name
+      = render :partial => 'user', :locals => { :user => current_user }
     .friend
-      = image_tag avatar_url(@friend)
-      = @friend.name
+      = render :partial => 'user', :locals => { :user => @friend }
     %br.clear
   .feed
     %ul 

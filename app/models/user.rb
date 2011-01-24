@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_one :profile  
   has_many :todos
   has_many :notes 
+  has_many :events
   has_and_belongs_to_many :accounts
 
   # Include default devise modules. Others available are:

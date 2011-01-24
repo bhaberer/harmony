@@ -5,6 +5,7 @@ class Account < ActiveRecord::Base
   has_many :notes 
   has_many :todos 
   has_many :lists 
+  has_many :events 
 
   def friend(user)
     (self.users - [user]).pop
