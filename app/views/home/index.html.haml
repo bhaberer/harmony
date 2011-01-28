@@ -3,11 +3,16 @@
   .info
     You can #{link_to 'Create a new harmony', new_account_path}.
     %br
-    - if @accounts.present?
+    - if @active_accounts.present?
       You are a part of the following Harmonies.
       %ul
-        - @accounts.each do |account|
+        - @active_accounts.each do |account|
           %li= link_to account.name.present? ? account.name : "Account #{account.id}", account  
+    - if @pending_accounts.present?
+      You are waiting for people to join the following Harmonies.
+      %ul
+        - @pending_accounts.each do |account|
+          %li= link_to account.name.present? ? account.name : "Account #{account.id}", account
     - if @invites.present?
       You are invited to be a part of the following Harmonies.
       %ul

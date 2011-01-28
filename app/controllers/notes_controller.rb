@@ -39,6 +39,7 @@ class NotesController < ApplicationController
       if @note.save
         @account.notes << @note
         current_user.notes << @note 
+        Event.create!(:event_type => :new_note, :user => current_user, :account => @account)
         UserMailer.new_note(@account.friend(current_user), current_user, @account).deliver
         format.html { redirect_to(@account, :notice => 'Note was successfully created.') }
       else

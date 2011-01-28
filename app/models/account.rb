@@ -10,5 +10,9 @@ class Account < ActiveRecord::Base
   def friend(user)
     (self.users - [user]).pop
   end
+ 
+  def harmony?
+    self.users.length == 2 
+  end
 
 end

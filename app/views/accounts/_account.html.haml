@@ -1,0 +1,6 @@
+.account
+  .name= account.name 
+  - if account.harmony? 
+    This is an active Harmony with #{account.friend(current_user).name}
+  - else 
+    This harmony is waiting to be joined by the person you invited.

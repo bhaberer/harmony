@@ -6,25 +6,8 @@
       = render :partial => 'user', :locals => { :user => @friend }
     %br.clear
   .feed
-    %ul 
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
-      %li OMG COntent Here!
+    %span Event Feed
+    = render :partial => 'events/event', :collection => @events
   .widgets
     .notes
       %span Notes

@@ -31,6 +31,23 @@ Feature: Manage accounts
      Given I am a new, authenticated user
        And I have created an account with the name "Testing"
       When I go to the home page
-      Then I should see "Testing"
+      Then there should be a new harmony named "Testing"
+       And I should see "Testing"
  
+  Scenario: Users should be able to see a listing of their accounts
+     Given I am a new, authenticated user
+       And I have created an account with the name "Testing"
+       And I have created an account with the name "More Tests"
+      When I go to the accounts page
+      Then I should see "Testing"
+       And I should see "More Tests"
+
+  Scenario: Users should be able to join accounts once invited.
+     Given I am a new, authenticated user
+       And I have been invited to "Testing" by "brian@weirdo513.org"
+      When I go to the accounts page
+       And I follow "Join this Harmony"
+      Then I should be on the account page for "Testing"
+
+
 

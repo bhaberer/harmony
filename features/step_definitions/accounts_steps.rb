@@ -1,7 +1,6 @@
 Given /^I have created an account with the name "([^"]*)"$/ do |name|
   user = User.first
-  a = Factory.create(:account, :name => name) 
-  user.accounts << a  
+  a = Factory.create(:account, :name => name, :users => [user]) 
 end
 
 Then /^there should be an invitation for "([^"]*)"$/ do |email|

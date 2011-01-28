@@ -14,6 +14,7 @@ class AccountsController < ApplicationController
     if @account.users.length < 2
       redirect_to :root, :notice => "Sorry, That Harmony is not Complete, Yet."
     else
+      @events = @account.events
       @lists = @account.lists
       @todos = @account.todos
       @notes = @account.notes 

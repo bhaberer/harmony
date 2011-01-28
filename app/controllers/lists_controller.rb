@@ -30,6 +30,7 @@ class ListsController < ApplicationController
       if @list.save
         @account.lists << @list
         UserMailer.new_list(@account.friend(current_user), current_user, @account).deliver
+        Event.create!(:event_type => :new_list, :user => current_user, :account => @account)
         format.html { redirect_to(@account, :notice => 'List was successfully created.') }
       else
         format.html { render :action => "new" }

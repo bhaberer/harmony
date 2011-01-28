@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save
         @list.items << @item
+        Event.create!(:event_type => :new_item, :user => current_user, :account => @account)
         format.html { redirect_to(@list.account, :notice => 'Item was successfully created.') }
       else
         format.html { render :action => "new" }

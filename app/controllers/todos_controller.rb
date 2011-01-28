@@ -26,12 +26,13 @@ class TodosController < ApplicationController
 
   def create
     @todo = Todo.new(params[:todo])
-    
+
     respond_to do |format|
       if @todo.save
         @account.todos << @todo
         current_user.todos << @todo
         UserMailer.new_todo(@account.friend(current_user), current_user, @account).deliver
+        Event.create!(:event_type => :new_todo, :user => current_user, :account => @account)
         format.html { redirect_to(@account, :notice => 'Todo was successfully created.') }
       else
         format.html { render :action => "new" }
