@@ -235,6 +235,24 @@ input.button {
     float: left;
     width: 460px;
     background-color: $color_a1;
+    .event {
+      background-color: $color_c1;
+      padding: 3px;
+      margin: 5px 0;
+      padding: 7px 10px;
+      @include rounded;
+      .time { 
+        float: right;
+        margin: -4px -6px;
+        padding: 5px 10px 3px;
+        background-color: $color_c2;
+        @include rounded(7px);
+      }
+      .text {
+        width: 320px; 
+        float: left; 
+      }
+    }
   } 
   .widgets {
     @include rounded;
@@ -288,6 +306,3 @@ input.button {
     }
   }
 }
-
-
-

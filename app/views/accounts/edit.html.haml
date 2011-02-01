@@ -1,6 +1,9 @@
 .account_settings
   %h1 Update Account
   = render 'form'
+  = button_to "Delete this account", account_path(@account), 
+    :confirm => "\nWARNING: Deleting an account is permanant.\n\nThis will remove the account and all todo items, notes, and other content.\n\nAre you sure?",
+    :method => :delete, :class => 'link_button'
   %h3 Account Lists
   = link_to "Create New List", new_account_list_path(@account), :rel => 'facebox'
   %ul

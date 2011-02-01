@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
  
   def name 
+    self.profile = Profile.create! unless self.profile 
     self.profile.name.present? ? self.profile.name : self.email.gsub(/(@.+)$/, '')
   end 
 end

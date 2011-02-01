@@ -2,6 +2,7 @@
   .right
     = button_to "X", account_note_path(@account, note), :confirm => "Are you sure?", 
       :method => :delete, :class => 'link_button'
+    = link_to "Edit Note", edit_account_note_path(@account, note), :class => 'link_button'
   %span
     From: #{note.user.name }
   %p= note.content

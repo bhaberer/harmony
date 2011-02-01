@@ -6,13 +6,14 @@
       = render :partial => 'user', :locals => { :user => @friend }
     %br.clear
   .feed
-    %span Event Feed
+    %h3 Event Feed
+    = link_to 'New Note', new_account_note_path(@account), :rel => 'facebox'
     = render :partial => 'events/event', :collection => @events
   .widgets
-    .notes
-      %span Notes
-      = link_to 'New Note', new_account_note_path(@account), :rel => 'facebox'
-      = render :partial => 'notes/note', :collection => @notes 
+    =#.notes
+    =# %span Notes
+    =# link_to 'New Note', new_account_note_path(@account), :rel => 'facebox'
+    =# render :partial => 'notes/note', :collection => @notes 
     .todos
       %span Things to do.
       = link_to 'I have something you need to do.', new_account_todo_path(@account), :rel => 'facebox'

@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
     if @account.users.length < 2
       redirect_to :root, :notice => "Sorry, That Harmony is not Complete, Yet."
     else
-      @events = @account.events
+      @events = @account.events.order('created_at desc')
       @lists = @account.lists
       @todos = @account.todos
       @notes = @account.notes 
@@ -33,14 +33,13 @@ class AccountsController < ApplicationController
       @account.users << current_user 
       @invite.destroy
       @account.invites == []
-      UserMailer.join(@account.friend(current_user), current_user, @account).deliver
+      UserMailer.join(@account.friend(current_user), @account).deliver
     end 
     redirect_to @account
   end
 
   def new
     @account = Account.new
-    @code = params[:code]
 
     respond_to do |format|
       format.html 
@@ -59,7 +58,7 @@ class AccountsController < ApplicationController
     respond_to do |format|
       if @account.save && @email.present?
         @account.users << current_user
-        @account.invites << Invite.new(:code => ActiveSupport::SecureRandom.base64(12), :email => @email)
+        @account.invites << Invite.new(:email => @email)
         UserMailer.invite(@email, current_user, @account).deliver
         format.html { redirect_to(:home, :notice => 'Harmony was created, you can access once the other person accepts.') }
       else
@@ -85,7 +84,7 @@ class AccountsController < ApplicationController
     @account.destroy
 
     respond_to do |format|
-      format.html { redirect_to(accounts_url) }
+      format.html { redirect_to(:home) }
       format.xml  { head :ok }
     end
   end

@@ -5,9 +5,19 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    when /the new todos page/
+      new_todos_path
+
+
+    when /the new notes page/
+      new_notes_path
+    when /the edit note page/
+      edit_account_note_path(Account.first, Note.first)
 
     when /the account page for "([^\"]*)"/
       account_path(Account.find_by_name($1))
+    when /the edit account page for "([^\"]*)"/
+      edit_account_path(Account.find_by_name($1))
 
 
 

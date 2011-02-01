@@ -7,6 +7,11 @@ class UserMailer < ActionMailer::Base
     mail(:to => email, :subject => "[Harmony] New Harmony Request.")      
   end
 
+  def join(user, account)
+    @to_user = user.name
+    mail(:to => user.email, :subject => "[Harmony] A user has joined your Harmony.")
+  end
+
   def new_note(to_user, from_user, account)
     @to_name = to_user.name || to_user.email
     @from_name = from_user.name || "Your Friend"
@@ -27,7 +32,6 @@ class UserMailer < ActionMailer::Base
     @task = todo.task
     mail(:to => to_user.email, :subject => "[Harmony] To-Do Item Complete.")
   end
-
 
   def new_list(to_user, from_user, account)
     @to_name = to_user.name || to_user.email
