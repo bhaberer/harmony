@@ -29,8 +29,8 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
+        @todo.set_type(params[:type], current_user, @account.friend(current_user))
         @account.todos << @todo
-        current_user.todos << @todo
         UserMailer.new_todo(@account.friend(current_user), current_user, @account).deliver
         Event.create!(:event_type => :new_todo, :user => current_user, :account => @account)
         format.html { redirect_to(@account, :notice => 'Todo was successfully created.') }
@@ -55,9 +55,8 @@ class TodosController < ApplicationController
   def complete
     @todo = Todo.find(params[:id])
     email = UserMailer.completed_todo(@account.friend(current_user), current_user, @todo)
-    
-    @todo.users.delete(current_user)
-    if @todo.users.blank?
+    @todo.check_off(current_user)
+    if @todo.done?
       email.deliver
     end 
 
@@ -65,5 +64,7 @@ class TodosController < ApplicationController
       format.html { redirect_to(@account) }
     end
   end
+
+  private 
  
 end

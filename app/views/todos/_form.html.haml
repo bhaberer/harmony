@@ -9,11 +9,11 @@
     = radio_button_tag :type, :me 
     = label_tag :type_me, "I need to do this." 
     = radio_button_tag :type, :you 
-    = label_tag :type_me, "#{@account.friend(current_user).name} needs to do this." 
+    = label_tag :type_you, "#{@account.friend(current_user).name} needs to do this." 
     = radio_button_tag :type, :we 
-    = label_tag :type_me, "Both of us." 
+    = label_tag :type_we, "Both of us." 
     = radio_button_tag :type, :either
-    = label_tag :type_me, "Either of us." 
+    = label_tag :type_either, "Either of us." 
 
     .field= f.text_field :task
     = f.submit :class => :button
