@@ -1,6 +1,6 @@
 .todo
   - if todo.users.include? current_user
-    = button_to "✓", complete_todo_path(@account, todo), :class => 'link_button right'
+    = link_to "Done", complete_todo_path(@account, todo), :class => 'link_button right'
     You need to #{todo.task}.
   - elsif todo.users.blank?
     #{todo.task}

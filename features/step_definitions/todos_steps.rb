@@ -1,14 +1,7 @@
-Given /^the following todos:$/ do |todos|
-  Todos.create!(todos.hashes)
+Given /^I have a todo named "([^"]*)"$/ do |name|
+  Factory.create(:todo, :task => name, :users => [User.first]) 
 end
 
-When /^I delete the (\d+)(?:st|nd|rd|th) todos$/ do |pos|
-  visit todos_path
-  within("table tr:nth-child(#{pos.to_i+1})") do
-    click_link "Destroy"
-  end
-end
-
-Then /^I should see the following todos:$/ do |expected_todos_table|
-  expected_todos_table.diff!(tableish('table tr', 'td,th'))
+Then /^I should not be an outstanding user on the "([^"]*)" todo$/ do |arg1|
+  assert !Todo.find_by_task(name).users.include?(User.first)
 end

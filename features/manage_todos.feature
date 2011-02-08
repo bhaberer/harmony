@@ -23,7 +23,7 @@ Feature: Manage todos
        And I press "Create Todo"
       Then I should be on the account page for "Testing Todos"
        And I should see "Write some tests"
-       And I should see "✓"
+       And I should see "Done"
 
   Scenario: Users should be able to make a todo for their partner
      Given I am a new, authenticated user
@@ -35,7 +35,7 @@ Feature: Manage todos
        And I press "Create Todo"
       Then I should be on the account page for "Testing Todos"
        And I should see "Write some tests"
-       And I should not see "✓"
+       And I should not see "Done"
 
   Scenario: Users should be able to make a todo for either harmony member
      Given I am a new, authenticated user
@@ -47,7 +47,7 @@ Feature: Manage todos
        And I press "Create Todo"
       Then I should be on the account page for "Testing Todos"
        And I should see "Write some tests"
-       And I should see "✓"
+       And I should see "Done"
 
   Scenario: Users should be able to make a todo for both harmony members
      Given I am a new, authenticated user
@@ -59,8 +59,16 @@ Feature: Manage todos
        And I press "Create Todo"
       Then I should be on the account page for "Testing Todos"
        And I should see "Write some tests"
-       And I should see "✓"
+       And I should see "Done"
 
-
+  Scenario: When users check off a todo item it completes.
+     Given I am a new, authenticated user
+       And I am part of an account "Testing Todos" with another user
+       And I have a todo named "Testing Stuff"
+       And I am on the account page for "Testing Todos"
+      When I follow "Done"
+      Then I should be on the account page for "Testing Todos" 
+       And I should not see "Done"
+       And I should not be an outstanding user on the "Testing Stuff" todo
 
 
