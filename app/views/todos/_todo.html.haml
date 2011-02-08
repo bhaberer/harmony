@@ -1,7 +1,8 @@
 .todo
-  - if todo.user == current_user 
-    You asked #{@account.friend(current_user).name.split[0]} to #{todo.task}, but they have not. 
-  - else
-    = button_to "✓", account_todo_path(@account, todo), :method => :delete, :class => 'link_button right'
+  - if todo.users.include? current_user
+    = button_to "✓", complete_todo_path(@account, todo), :class => 'link_button right'
     #{@account.friend(current_user).name.split[0]} wants you to #{todo.task}.
-    
+  - elsif todo.users.blank?
+    #{todo.task}
+  - else
+    #{@account.friend(current_user).name.split[0]} still needs to #{todo.task}. 

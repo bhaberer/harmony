@@ -52,10 +52,12 @@ class TodosController < ApplicationController
     end
   end
 
-  def destroy
+  def complete
     @todo = Todo.find(params[:id])
     email = UserMailer.completed_todo(@account.friend(current_user), current_user, @todo)
-    if @todo.destroy
+    
+    @todo.users.delete(current_user)
+    if @todo.users.blank?
       email.deliver
     end 
 

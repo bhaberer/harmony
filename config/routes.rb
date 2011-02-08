@@ -14,6 +14,7 @@ Harmony::Application.routes.draw do
     resources :todos
   end
 
+  match 'accounts/:account_id/todos/:id/complete' => 'todos#complete', :as => :complete_todo
   match 'accounts/:id/join' => 'accounts#join', :as => :join_account
 
   match '/' => 'home#index', :as => :home
