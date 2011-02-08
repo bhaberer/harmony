@@ -1,4 +1,7 @@
 .event
   .time #{time_ago_in_words(event.created_at)} ago.
   .text= event_text(event)
+  - if event.event_type == "new_note" && event.user = current_user
+    .right= button_to "X", account_note_path(@account, event.note), :confirm => "Are you sure?", :method => :delete, :class => 'link_button'
+
   %br.clear
