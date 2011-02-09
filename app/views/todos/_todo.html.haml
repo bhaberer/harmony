@@ -1,8 +1,10 @@
-.todo
-  - if todo.users.include? current_user
+- if todo.users.include? current_user
+  .todo.unfinished
     = link_to "Done", complete_todo_path(@account, todo), :class => 'link_button right'
     You need to #{todo.task}.
-  - elsif todo.users.blank?
+- elsif todo.users.blank?
+  .todo.finished
     #{todo.task}
-  - else
+- else
+  .todo.pending
     #{@account.friend(current_user).name.split[0]} still needs to #{todo.task}. 

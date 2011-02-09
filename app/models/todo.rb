@@ -2,6 +2,8 @@ class Todo < ActiveRecord::Base
   belongs_to :account
   has_and_belongs_to_many :users
   
+  validates_presence_of :task
+
   
   def done? 
     self.users == [] 

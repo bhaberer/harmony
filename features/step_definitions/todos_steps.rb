@@ -1,5 +1,21 @@
 Given /^I have a todo named "([^"]*)"$/ do |name|
-  Factory.create(:todo, :task => name, :users => [User.first], :account => User.first.accounts.first) 
+  Given %{I have a "me" todo named "#{name}"}
+end
+
+Given /^We have a todo named "([^"]*)"$/ do |name|
+  Given %{I have a "we" todo named "#{name}"}
+end
+
+Given /^I have a "([^"]*)" todo named "([^"]*)"$/ do |type, name|
+  account = User.first.accounts.first
+  user = User.first
+  todo = Factory.create(:todo, :task => name, :account => account)
+  todo.set_type(type, user, account.friend(user))
+end
+
+Then /^The Todo "([^"]*)" should not be finished\.$/ do |name|
+  todo = Todo.find_by_task(name)
+  assert todo && !todo.done?
 end
 
 Then /^I should not be an outstanding user on the "([^"]*)" todo$/ do |name|

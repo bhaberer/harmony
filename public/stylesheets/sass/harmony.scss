@@ -303,6 +303,9 @@ input.button {
         padding: 10px;
         width: 260px;
       }
+      .pending    { background-color: #FF9999; }
+      .finished   { background-color: #00CC00; }
+      .unfinished { background-color: #FF3333; }
     }
   }
 }

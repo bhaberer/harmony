@@ -282,3 +282,9 @@ input.button {
       margin: 10px;
       padding: 10px;
       width: 260px; }
+    .account .widgets .todos .pending {
+      background-color: #FF9999; }
+    .account .widgets .todos .finished {
+      background-color: #00CC00; }
+    .account .widgets .todos .unfinished {
+      background-color: #FF3333; }
