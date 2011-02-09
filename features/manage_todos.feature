@@ -83,6 +83,15 @@ Feature: Manage todos
        And The Todo "Testing Stuff" should not be finished.
 
   Scenario: When users check off a either item it completes, even if the other user hasn't checked off.
+     Given I am a new, authenticated user
+       And I am part of an account "Testing Todos" with another user
+       And Either of us has a todo named "Testing Stuff"
+       And I am on the account page for "Testing Todos"
+      When I follow "Done"
+      Then I should be on the account page for "Testing Todos"
+       And I should not see "Done"
+       And I should not be an outstanding user on the "Testing Stuff" todo
+       And The Todo "Testing Stuff" should be finished.
 
 
 

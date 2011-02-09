@@ -6,13 +6,13 @@
         %ul
         - @todo.errors.full_messages.each do |msg|
           %li= msg
-    = radio_button_tag :type, :me 
+    = f.radio_button :type, :me 
     = label_tag :type_me, "I need to do this." 
-    = radio_button_tag :type, :you 
-    = label_tag :type_you, "#{@account.friend(current_user).name} needs to do this." 
-    = radio_button_tag :type, :we 
+    = f.radio_button :type, :you 
+    = f.label :type_you, "#{@account.friend(current_user).name} needs to do this." 
+    = f.radio_button :type, :we 
     = label_tag :type_we, "Both of us." 
-    = radio_button_tag :type, :either
+    = f.radio_button :type, :either
     = label_tag :type_either, "Either of us." 
 
     .field= f.text_field :task

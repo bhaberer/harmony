@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110208010212) do
+ActiveRecord::Schema.define(:version => 20110209015434) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -75,12 +75,12 @@ ActiveRecord::Schema.define(:version => 20110208010212) do
   end
 
   create_table "todos", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "account_id"
     t.boolean  "completed",  :default => false
     t.string   "task"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "todo_type"
   end
 
   create_table "todos_users", :id => false, :force => true do |t|
