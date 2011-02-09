@@ -13,13 +13,13 @@ Feature: Manage todos
       Then I should be on the account page for "Testing Todos"
        And I should see "Write some tests"
  
-  Scenario: Users should be able to make a todo for themselves
+  Scenario: U:ers should be able to make a todo for themselves
      Given I am a new, authenticated user
        And I am part of an account "Testing Todos" with another user
        And I am on the account page for "Testing Todos"
       When I follow "I have something you need to do."
        And I fill in "todo_task" with "Write some tests"
-       And I choose "type_me" 
+       And I choose "I need to do this." 
        And I press "Create Todo"
       Then I should be on the account page for "Testing Todos"
        And I should see "Write some tests"
@@ -31,7 +31,7 @@ Feature: Manage todos
        And I am on the account page for "Testing Todos"
       When I follow "I have something you need to do."
        And I fill in "todo_task" with "Write some tests"
-       And I choose "type_you"
+       And I choose "tester2 needs to do this."
        And I press "Create Todo"
       Then I should be on the account page for "Testing Todos"
        And I should see "Write some tests"
@@ -43,7 +43,7 @@ Feature: Manage todos
        And I am on the account page for "Testing Todos"
       When I follow "I have something you need to do."
        And I fill in "todo_task" with "Write some tests"
-       And I choose "type_either"
+       And I choose "Either of us."
        And I press "Create Todo"
       Then I should be on the account page for "Testing Todos"
        And I should see "Write some tests"
@@ -55,7 +55,7 @@ Feature: Manage todos
        And I am on the account page for "Testing Todos"
       When I follow "I have something you need to do."
        And I fill in "todo_task" with "Write some tests"
-       And I choose "type_we"
+       And I choose "Both of us."
        And I press "Create Todo"
       Then I should be on the account page for "Testing Todos"
        And I should see "Write some tests"
