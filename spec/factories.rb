@@ -8,5 +8,6 @@ Factory.define :account do |a|
 end
  
 Factory.define :todo do |t|
+  t.account { |todo| todo.association(:account) }
   t.task "Test this"
 end
