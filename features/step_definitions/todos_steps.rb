@@ -13,8 +13,8 @@ end
 Given /^I have a "([^"]*)" todo named "([^"]*)"$/ do |type, name|
   account = User.first.accounts.first
   user = User.first
-  todo = Factory.create(:todo, :task => name, :account => account)
-  todo.set_type(type, user, account.friend(user))
+  todo = Factory.create(:todo, :task => name, :account => account, :todo_type => type)
+  todo.add_unfinished_users(user, account.friend(user))
 end
 
 Then /^The Todo "([^"]*)" should be finished\.$/ do |name|

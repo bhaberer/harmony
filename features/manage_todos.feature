@@ -9,6 +9,7 @@ Feature: Manage todos
        And I am on the account page for "Testing Todos"
       When I follow "I have something you need to do."
        And fill in "todo_task" with "Write some tests"
+       And I choose "I need to do this."
        And press "Create Todo"
       Then I should be on the account page for "Testing Todos"
        And I should see "Write some tests"

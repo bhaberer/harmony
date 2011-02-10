@@ -25,11 +25,11 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(params[:todo])
+    @todo = Todo.new(:task => params[:todo][:task], :todo_type => params[:todo][:todo_type])
 
     respond_to do |format|
       if @todo.save
-        @todo.set_type(params[:type], current_user, @account.friend(current_user))
+        @todo.add_unfinished_users(current_user, @account.friend(current_user))
         @account.todos << @todo
         UserMailer.new_todo(@account.friend(current_user), current_user, @account).deliver
         Event.create!(:event_type => :new_todo, :user => current_user, :account => @account)
