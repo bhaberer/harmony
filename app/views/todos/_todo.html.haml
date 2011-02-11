@@ -4,7 +4,7 @@
     You need to #{todo.task}.
 - elsif todo.users.blank?
   .todo.finished
-    #{todo.task}
+    #{todo.task} 
 - else
   .todo.pending
     #{@account.friend(current_user).name.split[0]} still needs to #{todo.task}. 

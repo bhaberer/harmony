@@ -8,7 +8,7 @@ module ApplicationHelper
   def event_text(event)
     case event.event_type
     when "new_note"
-      "#{event.user.name} says: \"#{event.note ? event.note.content : 'NO NOTE'}\"."
+      event.note.feed_text
     when "new_todo"
       "#{event.user.name} added a new todo."
     when "new_list"

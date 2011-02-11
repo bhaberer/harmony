@@ -83,7 +83,7 @@ Feature: Manage todos
        And I should not be an outstanding user on the "Testing Stuff" todo
        And The Todo "Testing Stuff" should not be finished.
 
-  Scenario: When users check off a either item it completes, even if the other user hasn't checked off.
+  Scenario: When users check off an either item it completes, even if the other user hasn't checked off.
      Given I am a new, authenticated user
        And I am part of an account "Testing Todos" with another user
        And Either of us has a todo named "Testing Stuff"
@@ -94,3 +94,12 @@ Feature: Manage todos
        And I should not be an outstanding user on the "Testing Stuff" todo
        And The Todo "Testing Stuff" should be finished. 
 
+  Scenario: Users can hide completed todos
+     Given I am a new, authenticated user
+       And I am part of an account "Testing Todos" with another user
+       And I have a todo named "Testing Stuff"
+       And the "Testing Stuff" todo is complete
+       And I am on the account page for "Testing Todos"
+      When I press "Hide" 
+      Then I should be on the account page for "Testing Todos"
+       And there should not be a todo named "Testing Stuff"

@@ -42,9 +42,12 @@ class TodosController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
+    task = params[:todo][:task]
+    type = params[:todo][:todo_type]
 
     respond_to do |format|
-      if @todo.update_attributes(params[:todo])
+      if @todo.update_attributes(:task => task, :todo_type => type)
+        @todo.add_unfinished_users(current_user, @account.friend(current_user))
         format.html { redirect_to(@account, :notice => 'Todo was successfully updated.') }
       else
         format.html { render :action => "edit" }

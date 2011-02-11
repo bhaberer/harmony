@@ -4,7 +4,6 @@ class ListsController < ApplicationController
   before_filter :auth_check
 
   def show
-
     respond_to do |format|
       format.html { redirect_to @account }
     end
