@@ -5,7 +5,7 @@ class Note < ActiveRecord::Base
 
   validates_presence_of :content
 
-  attr_protect :account_id, :user_id
+  attr_protected :account_id, :user_id
 
   def feed_text
     "#{self.user.name} says: \"#{event.note ? event.note.content : 'NO NOTE'}\"."

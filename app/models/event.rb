@@ -3,5 +3,5 @@ class Event < ActiveRecord::Base
   belongs_to :account
   belongs_to :note
  
-  attr_protect :user_id, :note_id, :account_id
+  attr_protected :user_id, :note_id, :account_id
 end

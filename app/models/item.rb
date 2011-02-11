@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
   belongs_to :list
 
-  attr_protect :list_id
+  attr_protected :list_id
 
 end

@@ -1,6 +1,6 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
 
-  attr_protect :user_id
+  attr_protected :user_id
  
 end
