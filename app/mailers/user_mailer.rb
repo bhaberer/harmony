@@ -30,7 +30,7 @@ class UserMailer < ActionMailer::Base
     @to_name = to_user.name || to_user.email
     @from_name = from_user.name || "Your Friend"
     @task = todo.task
-    mail(:to => to_user.email, :subject => "[Harmony] To-Do Item Complete.")
+    mail(:to => [to_user.email, from_user.email], :subject => "[Harmony] To-Do Item Complete.")
   end
 
   def new_list(to_user, from_user, account)

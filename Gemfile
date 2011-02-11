@@ -1,6 +1,6 @@
 # include at least one source and the rails gem
 source 'http://rubygems.org'
-gem 'rails', '3.0.0'
+gem 'rails', '3.0.4'
 #gem 'aws-s3', '0.6.2'
 #gem 'paperclip', '2.3.1.1'
 gem 'devise', '1.1.5'

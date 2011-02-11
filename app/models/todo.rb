@@ -7,7 +7,18 @@ class Todo < ActiveRecord::Base
   validates_presence_of :task
   validates_presence_of :todo_type 
 
- 
+  class << self
+   def unfinished
+     where(:completed => false)
+   end
+   def finished
+     where(:completed => true)
+   end
+   def for_user(user)
+     joins('left outer join todos_users on todos.id=todos_users.todo_id').where('todos_users.user_id = ?', user.id)
+   end
+  end
+
   def done? 
     self.users == [] 
   end 
@@ -15,6 +26,7 @@ class Todo < ActiveRecord::Base
   def check_off(user)
     self.users.delete user if self.users.include? user 
     self.users = [] if self.todo_type == 'either'
+    self.toggle!(:completed) if done? && !completed?
   end 
 
   def add_unfinished_users(user, friend)

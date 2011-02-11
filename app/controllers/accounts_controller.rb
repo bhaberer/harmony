@@ -16,7 +16,11 @@ class AccountsController < ApplicationController
     else
       @events = @account.events.order('created_at desc')
       @lists = @account.lists
-      @todos = @account.todos
+
+      @mine = my_unfinished_todos
+      @theirs = their_unfinished_todos
+      @finished = our_finished_todos
+
       @notes = @account.notes 
       @friend = @account.friend(current_user)
       respond_to do |format|
@@ -88,4 +92,19 @@ class AccountsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+
+  def my_unfinished_todos
+    return @account.todos.unfinished.for_user(current_user) 
+  end
+
+  def their_unfinished_todos
+    return @account.todos.unfinished #- my_unfinished_todos
+  end
+
+  def our_finished_todos
+    return @account.todos.finished
+  end
+
 end

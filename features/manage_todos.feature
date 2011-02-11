@@ -92,7 +92,5 @@ Feature: Manage todos
       Then I should be on the account page for "Testing Todos"
        And I should not see "Done"
        And I should not be an outstanding user on the "Testing Stuff" todo
-       And The Todo "Testing Stuff" should be finished.
-
-
+       And The Todo "Testing Stuff" should be finished. 
 
