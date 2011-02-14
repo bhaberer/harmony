@@ -100,7 +100,7 @@ class AccountsController < ApplicationController
   end
 
   def their_unfinished_todos
-    return @account.todos.unfinished #- my_unfinished_todos
+    return @account.todos.unfinished - my_unfinished_todos
   end
 
   def our_finished_todos
