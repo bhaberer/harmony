@@ -5,6 +5,6 @@ ActionMailer::Base.smtp_settings = {
   :port => 587,
   :authentication => :plain,
   :user_name => "harmony.application@gmail.com",
-  :password => "We create harmony"
+  :password => ENV['gmail_pass'] 
 }
 
