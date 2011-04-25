@@ -8,7 +8,7 @@ Feature: Manage accounts
       When I go to the home page
        And I follow "Create a new harmony"
        And I fill in "name" with "Account Name"
-       And I fill in "email" with "foo@weirdo513.org"
+       And I fill in "email" with "harmony.application+foo@gmail.com"
        And I press "Create Harmony"
       Then there should be a new harmony named "Account Name"
 
@@ -17,9 +17,9 @@ Feature: Manage accounts
       When I go to the home page
        And I follow "Create a new harmony"
        And I fill in "name" with "Account Name"
-       And I fill in "email" with "foo@weirdo513.org"
+       And I fill in "email" with "harmony.application+foo@gmail.com"
        And I press "Create Harmony"
-      Then there should be an invitation for "foo@weirdo513.org"
+      Then there should be an invitation for "harmony.application+foo@gmail.com"
 
   Scenario: Users cannot access an account that has not been joined by the other person.
      Given I am a new, authenticated user

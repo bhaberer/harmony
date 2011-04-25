@@ -9,13 +9,19 @@ Harmony::Application.routes.draw do
   end  
  
   resources :accounts do
+    post 'join', :on => :member
     resources :lists
     resources :notes
-    resources :todos
-  end
+    resources :todos do
+      member do
+        get 'complete'
+        get 'hide'
+      end
+    end
+ end
 
-  match 'accounts/:account_id/todos/:id/complete' => 'todos#complete', :as => :complete_todo
-  match 'accounts/:id/join' => 'accounts#join', :as => :join_account
+  #match 'accounts/:account_id/todos/:id/complete' => 'todos#complete', :as => :complete_todo
+  #match 'accounts/:id/join' => 'accounts#join', :as => :join_account
 
   match '/' => 'home#index', :as => :home
   root :to => 'home#index'

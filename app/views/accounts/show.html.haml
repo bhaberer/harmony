@@ -13,8 +13,8 @@
     .todos
       %span Things to do.
       = link_to 'I have something you need to do.', new_account_todo_path(@account), :rel => 'facebox'
-      = render :partial => 'todos/todo', :collection => @mine
-      = render :partial => 'todos/todo', :collection => @theirs
-      = render :partial => 'todos/todo', :collection => @finished
+      #mine= render :partial => 'todos/todo', :collection => @mine
+      #theirs= render :partial => 'todos/todo', :collection => @theirs
+      #finished= render :partial => 'todos/todo', :collection => @finished
     = render :partial => 'lists/list', :collection => @lists
   %br.clear 

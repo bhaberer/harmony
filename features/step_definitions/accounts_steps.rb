@@ -23,7 +23,7 @@ end
 Given /^I am part of an account "([^"]*)" with another user$/ do |name|
   account = Factory.create(:account, :name => name)
   account.users << User.first
-  account.users << Factory.create(:user, :email => "tester2@harmony.heroku.com")
+  account.users << Factory.create(:user, :email => "harmony.application+tester2@gmail.com")
 end
 
 Then /^The "([^"]*)" account should be deleted\.$/ do |name|

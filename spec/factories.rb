@@ -1,5 +1,5 @@
 Factory.define :user do |u|
-  u.email "tester@harmony.heroku.com"
+  u.email "harmony.application+tester@gmail.com"
   u.password 'foobar'
 end
 

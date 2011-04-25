@@ -9,10 +9,10 @@ class Todo < ActiveRecord::Base
 
   class << self
    def unfinished
-     where(:completed => false)
+     where(:completed => false).order('created_at desc')
    end
    def finished
-     where(:completed => true)
+     where(:completed => true).order('updated_at desc')
    end
    def for_user(user)
      joins('left outer join todos_users on todos.id=todos_users.todo_id').where('todos_users.user_id = ?', user.id)
@@ -28,6 +28,10 @@ class Todo < ActiveRecord::Base
     self.users = [] if self.todo_type == 'either'
     self.toggle!(:completed) if done? && !completed?
   end 
+
+  def hide
+    self.hidden = false && self.save
+  end
 
   def add_unfinished_users(user, friend)
     case self.todo_type

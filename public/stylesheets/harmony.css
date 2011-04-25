@@ -79,7 +79,11 @@ input.button {
 
 .link_button {
   border: 0px solid black;
-  background-color: white; }
+  background-color: white;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  padding: 1px 4px 2px; }
   .link_button:hover {
     background-color: black;
     color: white; }

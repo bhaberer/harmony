@@ -4,7 +4,7 @@ Given /^I have one "([^\"]*)" named "([^\"]*)" with password "([^\"]*)"$/ do |us
 end
 
 Given /^I am a new, authenticated user$/ do
-  email = 'testing@weirdo513.org'
+  email = 'harmony.application+tester@gmail.com'
   password = 'secretpass'
 
   Given %{I have one "user" named "#{email}" with password "#{password}"}

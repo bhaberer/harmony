@@ -65,6 +65,17 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(@account) }
+      format.js { render :layout => false }
+    end
+  end
+
+  def hide
+    @todo = Todo.find(params[:id])
+    @todo.hide
+
+    respond_to do |format|
+      format.html { redirect_to(@account) }
+      format.js { render :layout => false }
     end
   end
 
