@@ -55,6 +55,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(@list.account) }
+      format.js { render :layout => false }
     end
   end
   

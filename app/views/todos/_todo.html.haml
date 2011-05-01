@@ -1,11 +1,11 @@
 - if todo.users.include? current_user
-  .todo.unfinished{:id => "todo_#{todo.id}"}
+  .todo.unfinished{:id => "todo_#{todo.id}", :style => blank.nil? ? '' : 'display: none;' }
     = link_to "Done", complete_account_todo_path(@account, todo), :class => 'link_button right get'
     You need to #{todo.task}.
 - elsif todo.users.blank?
-  .todo.finished{:id => "todo_#{todo.id}"}
+  .todo.finished{:id => "todo_#{todo.id}", :style => blank.nil? ? '' : 'display: none;' }
     .hide= link_to '[ Hide ]', hide_account_todo_path(@account, todo), :class => 'link_button right get'
     #{todo.task}
 - else
-  .todo.pending
+  .todo.pending{:id => "todo_#{todo.id}", :style => blank.nil? ? '' : 'display: none;' }
     #{@account.friend(current_user).name.split[0]} still needs to #{todo.task}. 

@@ -1,4 +1,4 @@
-%li
+%li{:id => "item_#{item.id}"}
   .item
     = button_to "X", list_item_path(item.list, item), :method => :delete, :class => 'link_button right'
     = item.content

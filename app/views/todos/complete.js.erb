@@ -1,6 +1,8 @@
 $('<%= "#todo_#{@todo.id}" %>').fadeOut('slow', function() {
   $('<%= "#todo_#{@todo.id}" %>').remove();
-  $('<%= escape_javascript(render :partial => 'todos/jstodo', :locals => {:todo => @todo} ) %>').prependTo('#finished');
-  $('<%= "#todo_#{@todo.id}" %>').fadeIn('slow');
-});
 
+  $('<%= escape_javascript(render :partial => 'todos/todo', :locals => {:todo => @todo, :hide => true} ) %>').prependTo('<%= @todo.done? ? "#finished" : "#theirs" %>');
+  $('<%= "#todo_#{@todo.id}" %>').fadeIn('slow', function() {
+     ajaxLinks();
+   });
+});
