@@ -12,7 +12,7 @@ class Todo < ActiveRecord::Base
      where(:completed => false).order('created_at desc')
    end
    def finished
-     where(:completed => true).order('updated_at desc')
+     where(:completed => true, :hidden => false).order('updated_at desc')
    end
    def for_user(user)
      joins('left outer join todos_users on todos.id=todos_users.todo_id').where('todos_users.user_id = ?', user.id)
@@ -30,7 +30,8 @@ class Todo < ActiveRecord::Base
   end 
 
   def hide
-    self.hidden = false && self.save
+    self.hidden = true
+    self.save
   end
 
   def add_unfinished_users(user, friend)

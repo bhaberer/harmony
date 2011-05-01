@@ -71,6 +71,7 @@ class TodosController < ApplicationController
 
   def hide
     @todo = Todo.find(params[:id])
+    @account = Account.find(params[:account_id])
     @todo.hide
 
     respond_to do |format|
